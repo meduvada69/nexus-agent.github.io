@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nexus Agent: autonomous competitive intelligence</title>
+<meta name="description" content="Nexus Agent turns days of competitor research into minutes. Goal-driven TinyFish agents return schema-validated, cited comparison matrices. Kritical Hacks 2026, AI/ML track.">
+<meta name="theme-color" content="#0E1526">
+<script>try{var t=localStorage.getItem('nexus-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="#top" aria-label="Nexus Agent, back to top">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="m-bg" x="1" y="1" width="30" height="30" rx="9"/>
+        <path class="m-line" d="M16 16 8.6 9.6M16 16l7.6-6.2M16 16v8.8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle class="m-fg" cx="8.6" cy="9.6" r="2.5"/>
+        <circle class="m-fg" cx="23.6" cy="9.8" r="2.5"/>
+        <circle class="m-fg" cx="16" cy="24.8" r="2.5"/>
+        <circle class="m-hub" cx="16" cy="16" r="3.8"/>
+      </svg>
+      <span>Nexus Agent</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#ai">AI loop</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#tinyfish">TinyFish</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme"></button>
+      <a class="btn btn-small btn-ghost gh-link" href="https://github.com/YOUR-USERNAME/kritical-nexus-agent" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span class="gh-text">GitHub</span>
+      </a>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- Hero + live demo -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap">
+      <ul class="event-line" aria-label="Event details">
+        <li>Kritical Hacks 2026</li>
+        <li>IGDTUW Delhi</li>
+        <li>AI/ML track, open innovation</li>
+        <li>Built on TinyFish</li>
+      </ul>
+
+      <h1 id="hero-title">Days of market research in minutes.</h1>
+
+      <div class="hero-sub">
+        <p class="lede">Nexus Agent is autonomous competitive intelligence. Give it a market and a goal. Agents on the TinyFish Agent API and Fetch API do the clicking and come back with a schema-validated comparison matrix where every cell is cited.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#demo" data-run-demo>Watch a run</a>
+          <a class="btn btn-ghost gh-link" href="https://github.com/YOUR-USERNAME/kritical-nexus-agent" target="_blank" rel="noopener">View the code</a>
+        </div>
+      </div>
+
+      <div class="console" id="demo" role="region" aria-label="Sample Nexus Agent run">
+        <div class="console-bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="console-path">nexus.app / matrix / saas-pricing</span>
+          <span class="status" id="runStatus" data-state="idle"><span class="status-dot" aria-hidden="true"></span><span class="status-text">Ready</span></span>
+        </div>
+
+        <div class="goal-row">
+          <span class="goal-label" id="goalLabel">Goal</span>
+          <div class="goal-text" id="goalText" aria-labelledby="goalLabel"><span class="typed" id="typed"></span><span class="caret" aria-hidden="true"></span></div>
+          <button class="btn btn-run" id="runBtn" type="button">Run the agents</button>
+        </div>
+
+        <div class="console-body">
+          <div class="pane">
+            <div class="pane-head"><h3>Agents</h3><span id="plannerNote">Waiting for a goal</span></div>
+            <ol class="lanes" id="lanes"></ol>
+          </div>
+          <div class="pane">
+            <div class="pane-head"><h3>Comparison matrix</h3><span>Select Source on any cell</span></div>
+            <div class="table-scroll">
+              <table class="matrix">
+                <thead>
+                  <tr><th scope="col">Competitor</th><th scope="col">Starter</th><th scope="col">Pro, 50 seats</th><th scope="col">Confidence</th></tr>
+                </thead>
+                <tbody id="matrixBody"></tbody>
+              </table>
+            </div>
+            <div class="cell-detail" id="cellDetail" hidden></div>
+            <div class="diff-banner" id="diffBanner" hidden></div>
+          </div>
+        </div>
+
+        <div class="console-foot">
+          <span>Sample run with illustrative data, sped up for the page.</span>
+          <button class="btn btn-small btn-screen" id="rerunBtn" type="button" disabled>Re-run and compare</button>
+        </div>
+        <p class="sr-only" id="liveRegion" aria-live="polite"></p>
+      </div>
+
+      <ul class="proof">
+        <li><strong>Days → minutes</strong><span>Research cycle per market</span></li>
+        <li><strong>0 selectors</strong><span>Maintained by our team</span></li>
+        <li><strong>100% cited</strong><span>Every cell links to its source and step trace</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="section" id="problem" aria-labelledby="problem-title">
+    <div class="wrap problem-grid">
+      <div>
+        <div class="section-head">
+          <h2 id="problem-title">Competitive research is a multi-day manual grind, and it’s stale on arrival.</h2>
+        </div>
+        <ul class="pains">
+          <li><strong>Tab sprawl</strong><p>Analysts open 20+ tabs per competitor: pricing, calculators, docs, changelogs.</p></li>
+          <li><strong>Prices that hide</strong><p>Real pricing sits behind JS toggles, seat sliders, geo-gates and bot walls. Static scrapers get back empty HTML.</p></li>
+          <li><strong>Hand-typed output</strong><p>The result is a spreadsheet typed by hand, outdated before the meeting starts.</p></li>
+          <li><strong>Scripts that snap</strong><p>Scrapers break on every competitor redeploy, so automation never sticks.</p></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="browser" aria-hidden="true">
+          <div class="tabstrip">
+            <span class="tab active">Pricing</span><span class="tab">Plans</span><span class="tab">Calculator</span><span class="tab">Docs</span><span class="tab">Changelog</span><span class="tab">Enterprise</span><span class="tab">Compare</span><span class="tab">Billing FAQ</span><span class="tab">Pricing (EU)</span><span class="tab">Release notes</span><span class="tab">Reviews</span><span class="tab">Blog</span><span class="tab-more">+9</span>
+          </div>
+          <div class="browser-body">
+            <div class="urlbar">competitor-a.example/pricing</div>
+            <p class="scraper-label">What a static scraper gets back</p>
+<pre class="scraper-out"><span class="s-dim">&lt;!-- pricing renders client-side --&gt;</span>
+<span class="s-cyan">&lt;div</span> <span class="s-violet">id</span>=<span class="s-green">"pricing-app"</span><span class="s-cyan">&gt;&lt;/div&gt;</span>
+<span class="s-cyan">&lt;script</span> <span class="s-violet">src</span>=<span class="s-green">"/bundle.js"</span><span class="s-cyan">&gt;&lt;/script&gt;</span></pre>
+            <p class="scraper-note">No prices, no tiers, nothing to compare.</p>
+          </div>
+        </div>
+        <dl class="figures">
+          <div><dt>20+</dt><dd>tabs opened per competitor <em>(est.)</em></dd></div>
+          <div><dt>~16 hrs</dt><dd>analyst time per refresh <em>(est.)</em></dd></div>
+          <div><dt>Weeks</dt><dd>before a manual matrix goes stale</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="section band" id="solution" aria-labelledby="solution-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="solution-title">One prompt in. A structured, cited comparison matrix out.</h2>
+        <p>You describe what you want to know. Nexus Agent does the clicking, checks its own work and hands back a table you can audit.</p>
+      </div>
+      <ol class="flow">
+        <li><h3>Ask</h3><p>Give it a market or a list of competitors plus a goal, like “compare pricing at 50 seats”.</p></li>
+        <li><h3>Fan out</h3><p>The planner assigns each competitor to its own TinyFish agent, and they all run in parallel.</p></li>
+        <li><h3>Cite</h3><p>Every cell keeps its source link, a confidence score and the agent’s step trace.</p></li>
+        <li><h3>Track</h3><p>Scheduled re-runs diff the results and flag rival price moves.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Users -->
+  <section class="section" id="users" aria-labelledby="users-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="users-title">Built for teams whose job is living in competitor tabs.</h2>
+      </div>
+      <div class="users-grid">
+        <dl class="facts">
+          <div><dt>Beachhead</dt><dd>B2B SaaS growth and product-marketing teams maintaining battlecards.</dd></div>
+          <div><dt>Wedge use case</dt><dd>Pricing and packaging intelligence: the highest-value, hardest-to-scrape data.</dd></div>
+          <div><dt>Why it works as a subscription</dt><dd>A clear buyer, a recurring pain and weekly usage.</dd></div>
+        </dl>
+        <ul class="personas">
+          <li>
+            <span class="persona-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span>
+            <h3>Growth and PMM</h3><p>Live battlecards and pricing comparisons.</p>
+          </li>
+          <li>
+            <span class="persona-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></span>
+            <h3>Founders and VCs</h3><p>Market due diligence in one afternoon.</p>
+          </li>
+          <li>
+            <span class="persona-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg></span>
+            <h3>Sales ops and deal desk</h3><p>Always-current competitor pricing for negotiations.</p>
+          </li>
+          <li>
+            <span class="persona-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span>
+            <h3>Agencies and consultants</h3><p>Client market reports on demand.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI loop -->
+  <section class="section band" id="ai" aria-labelledby="ai-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="ai-title">AI plans, acts and verifies. It isn’t a ChatGPT wrapper.</h2>
+        <p>Four stages, each with a job and a check. The language model never writes a number it didn’t get from a validated cell.</p>
+      </div>
+
+      <div class="stage-tabs" role="tablist" aria-label="AI loop stages">
+        <button class="stage-tab" type="button" role="tab" id="tab-plan" aria-controls="panel-plan" aria-selected="true">
+          <span class="num">1</span><span class="name">Plan</span><span class="sum">Goal decomposition into per-site agent tasks</span>
+        </button>
+        <button class="stage-tab" type="button" role="tab" id="tab-act" aria-controls="panel-act" aria-selected="false" tabindex="-1">
+          <span class="num">2</span><span class="name">Act</span><span class="sum">TinyFish agents run multi-step browser actions</span>
+        </button>
+        <button class="stage-tab" type="button" role="tab" id="tab-verify" aria-controls="panel-verify" aria-selected="false" tabindex="-1">
+          <span class="num">3</span><span class="name">Verify</span><span class="sum">Schema validation, confidence score, retry policy</span>
+        </button>
+        <button class="stage-tab" type="button" role="tab" id="tab-synth" aria-controls="panel-synth" aria-selected="false" tabindex="-1">
+          <span class="num">4</span><span class="name">Synthesize</span><span class="sum">Grounded comparisons, gaps and positioning</span>
+        </button>
+      </div>
+
+      <div class="stage-panel" id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" tabindex="0">
+        <div>
+          <h3>Turn one goal into a task for every site</h3>
+          <p>A planner LLM converts your goal into plain-English TinyFish agent instructions, one task per competitor site.</p>
+          <ul class="ticks">
+            <li>One goal becomes as many tasks as there are competitors.</li>
+            <li>The LangGraph state machine moves each task through plan, dispatch, validate and retry.</li>
+            <li>Tasks fan out over a Redis queue, so competitors run concurrently.</li>
+          </ul>
+        </div>
+<pre class="screen"><span class="s-dim">goal</span>    Compare pricing at 50 seats
+<span class="s-dim">plan</span>    <span class="s-violet">3 tasks</span>, dispatched in parallel
+
+<span class="s-cyan">task 1</span>  competitor-a.example/pricing
+        switch to annual → set seats to 50 → read tiers
+<span class="s-cyan">task 2</span>  competitor-b.example/pricing
+        switch to annual → set seats to 50 → read tiers
+<span class="s-cyan">task 3</span>  competitor-c.example/pricing
+        switch to annual → set seats to 50 → read tiers</pre>
+      </div>
+
+      <div class="stage-panel" id="panel-act" role="tabpanel" aria-labelledby="tab-act" tabindex="0" hidden>
+        <div>
+          <h3>Click through pages the way an analyst would</h3>
+          <p>TinyFish agents take plain-English goals and carry out multi-step DOM actions, then return structured JSON with a step trace.</p>
+          <ul class="action-chips" aria-label="Agent actions">
+            <li>Toggle monthly/annual</li><li>Drag seat sliders</li><li>Fill calculator forms</li><li>Paginate plan tables</li><li>Dismiss modals</li>
+          </ul>
+        </div>
+<pre class="screen"><span class="s-dim">agent-b  00.0s</span>  open     competitor-b.example/pricing
+<span class="s-dim">agent-b  03.6s</span>  toggle   billing → annual      <span class="s-green">✓</span>
+<span class="s-dim">agent-b  07.8s</span>  set      seats → 50            <span class="s-green">✓</span>
+<span class="s-dim">agent-b  11.6s</span>  extract  tier table → JSON     <span class="s-green">✓</span>
+<span class="s-dim">agent-b  12.0s</span>  return   JSON + step trace</pre>
+      </div>
+
+      <div class="stage-panel" id="panel-verify" role="tabpanel" aria-labelledby="tab-verify" tabindex="0" hidden>
+        <div>
+          <h3>Check every value before anyone sees it</h3>
+          <ul class="ticks">
+            <li><strong>Typed extraction.</strong> Pydantic schemas constrain every output.</li>
+            <li><strong>Verifier loop.</strong> Confidence scoring plus cross-source checks. Low confidence triggers a refined retry.</li>
+            <li><strong>Deterministic fallback.</strong> If an agent fails, the Fetch API’s markdown goes to a rule-based parser instead.</li>
+          </ul>
+        </div>
+<pre class="screen"><span class="s-dim">cell</span>         competitor-c / pro / 50 seats
+<span class="s-dim">schema</span>       <span class="s-green">✓</span> valid PriceCell
+<span class="s-dim">source_url</span>   <span class="s-green">✓</span> attached
+<span class="s-dim">cross-check</span>  <span class="s-green">✓</span> agrees with a second source
+<span class="s-dim">confidence</span>   <span class="s-cyan">0.91</span> → accept
+
+<span class="s-amber">low confidence</span>  refine goal → retry on Agent API
+<span class="s-amber">agent failure</span>   Fetch API markdown → rule-based parser</pre>
+      </div>
+
+      <div class="stage-panel" id="panel-synth" role="tabpanel" aria-labelledby="tab-synth" tabindex="0" hidden>
+        <div>
+          <h3>Write insights from validated data only</h3>
+          <p>The synthesis LLM only sees cells that passed validation, so there are no hallucinated prices. It writes grounded comparisons, gaps and positioning insights, each tied back to the cells it used.</p>
+        </div>
+        <div class="screen insights">
+          <p class="s-dim">Sample output from the 6 validated cells in the demo above</p>
+          <ul>
+            <li>Competitor B has the lowest Pro price at 50 seats: $1,200 a month.<span class="cite">B/Pro</span></li>
+            <li>B undercuts A by 17% on Pro at 50 seats.<span class="cite">A/Pro</span><span class="cite">B/Pro</span></li>
+            <li>Pro at 50 seats ranges from $1,200 to $1,990 a month, a 66% spread.<span class="cite">B/Pro</span><span class="cite">C/Pro</span></li>
+            <li>Competitor C is the most expensive at both tiers.<span class="cite">C/Starter</span><span class="cite">C/Pro</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="section" id="architecture" aria-labelledby="arch-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="arch-title">Event-driven and schema-first. Every stage is typed and observable.</h2>
+        <p>Each stage hands typed data to the next, and every agent step streams to the UI as it happens.</p>
+      </div>
+
+      <div class="pipeline" id="pipeline">
+        <div class="node"><span class="layer">Client</span><h3>React UI</h3><p>Live trace and matrix</p></div>
+        <div class="node"><span class="layer">Orchestration</span><h3>FastAPI + LangGraph</h3><p>State machine, retries</p></div>
+        <div class="node"><span class="layer">Execution</span><h3>TinyFish SDK</h3><p>Agent API + Fetch API</p></div>
+        <div class="node"><span class="layer">Validation</span><h3>Pydantic</h3><p>Typed schemas</p></div>
+        <div class="node"><span class="layer">Intelligence</span><h3>LLM synthesis</h3><p>Validated data only</p></div>
+        <div class="node"><span class="layer">Output</span><h3>Matrix + alerts</h3><p>Cited, diffed</p></div>
+      </div>
+      <div class="loops">
+        <div class="loop" data-loop="retry"><strong>Retry loop</strong>Low confidence → refined goal → Agent API</div>
+        <div class="loop" data-loop="fallback"><strong>Fallback</strong>Agent failure → Fetch API markdown → rule-based parser</div>
+      </div>
+      <ul class="rail" aria-label="Infrastructure">
+        <li><code>Redis</code><span>Queue for parallel fan-out</span></li>
+        <li><code>Postgres</code><span>Snapshots and diffs</span></li>
+        <li><code>SSE</code><span>Streams agent steps to the UI</span></li>
+      </ul>
+
+      <div class="tracer" role="group" aria-label="Trace a job">
+        <span class="tracer-label">Trace a job:</span>
+        <button class="btn btn-small btn-ghost" type="button" data-trace="clean" aria-pressed="false">Clean run</button>
+        <button class="btn btn-small btn-ghost" type="button" data-trace="retry" aria-pressed="false">Low-confidence retry</button>
+        <button class="btn btn-small btn-ghost" type="button" data-trace="fallback" aria-pressed="false">Agent failure</button>
+      </div>
+      <p class="trace-caption" id="traceCaption" aria-live="polite">Pick a scenario to watch a job move through each stage.</p>
+
+      <div class="arch-lower">
+        <ul class="props">
+          <li><h3>Event-driven</h3><p>Every agent step streams live to the UI.</p></li>
+          <li><h3>State machine</h3><p>LangGraph runs plan → dispatch → validate → retry.</p></li>
+          <li><h3>Parallel fan-out</h3><p>N competitors run concurrently.</p></li>
+          <li><h3>Schema-first</h3><p>Invalid JSON never reaches the UI.</p></li>
+        </ul>
+        <figure class="code">
+          <figcaption class="code-head"><span>schemas.py</span><span>Simplified example</span></figcaption>
+<pre><code><span class="k">class</span> <span class="f">PriceCell</span>(BaseModel):
+    competitor: <span class="f">str</span>
+    tier: Literal[<span class="s">"starter"</span>, <span class="s">"pro"</span>]
+    seats: <span class="f">int</span> = Field(ge=<span class="n">1</span>)
+    billing: Literal[<span class="s">"monthly"</span>, <span class="s">"annual"</span>]
+    price_per_month: Decimal = Field(gt=<span class="n">0</span>)
+    source_url: HttpUrl
+    confidence: <span class="f">float</span> = Field(ge=<span class="n">0</span>, le=<span class="n">1</span>)
+    trace_id: <span class="f">str</span>  <span class="cm"># links the cell to its agent steps</span></code></pre>
+          <p class="code-note">If an extraction doesn’t fit this shape, it never reaches the matrix.</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- TinyFish -->
+  <section class="section band" id="tinyfish" aria-labelledby="tf-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="tf-title">Agent API for what humans click. Fetch API for what pages say.</h2>
+        <p>TinyFish is the mandatory integration, and it’s also why this works at all. A router sends each page to the API that fits it.</p>
+      </div>
+
+      <div class="tf-grid">
+        <div class="oldway">
+          <h3>Why not Selenium or Playwright</h3>
+          <ul class="crosses">
+            <li>Brittle selectors break on every redeploy.</li>
+            <li>We’d own proxies, stealth and CAPTCHA handling, and bot walls would still block us.</li>
+            <li>No goal-level reasoning: one script per competitor.</li>
+          </ul>
+        </div>
+
+        <div class="router" id="router">
+          <h3>Try the router</h3>
+          <p class="router-hint">Pick a page and see which API Nexus sends it to.</p>
+          <div class="router-pages" id="routerPages" role="group" aria-label="Page types"></div>
+          <div class="router-lanes">
+            <div class="route-target" data-api="agent">
+              <span class="api-name">Agent API</span>
+              <span class="api-for">Interactive pages</span>
+              <span class="routed">Routed here</span>
+            </div>
+            <div class="route-target" data-api="fetch">
+              <span class="api-name">Fetch API</span>
+              <span class="api-for">Static content, cheaper and faster</span>
+              <span class="routed">Routed here</span>
+            </div>
+          </div>
+          <p class="route-reason" id="routeReason" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="api-cards">
+        <article class="api-card" data-api="agent">
+          <h3>TinyFish Agent API</h3>
+          <p>Takes plain-English goals and performs multi-step DOM actions. Returns structured JSON plus a step trace.</p>
+          <ul class="action-chips" aria-label="Agent API actions">
+            <li>Toggle monthly/annual</li><li>Drag seat sliders</li><li>Fill calculator forms</li><li>Paginate plan tables</li><li>Dismiss modals</li>
+          </ul>
+        </article>
+        <article class="api-card" data-api="fetch">
+          <h3>TinyFish Fetch API</h3>
+          <p>Renders JS pages into clean markdown or JSON. Used for docs, changelogs, blogs and reviews, and as the deterministic fallback when an agent run fails.</p>
+          <ul class="action-chips" aria-label="Fetch API uses">
+            <li>Docs</li><li>Changelogs</li><li>Blogs</li><li>Reviews</li><li>Agent fallback</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section class="section" id="impact" aria-labelledby="impact-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="impact-title">From a two-day manual cycle to a scheduled, always-fresh feed.</h2>
+        <p>This is the expected impact. Figures marked as targets are what we’re building toward, not measured results.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="compare">
+          <thead>
+            <tr><th scope="col"><span class="sr-only">Dimension</span></th><th scope="col">Manual research</th><th scope="col">With Nexus Agent</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Time</th><td>Hours of tab-hopping per competitor</td><td>Minutes per competitor (target)</td></tr>
+            <tr><th scope="row">Coverage</th><td>The top three rivals</td><td>Dozens of rivals in parallel</td></tr>
+            <tr><th scope="row">Freshness</th><td>Quarterly decks</td><td>Daily diffs</td></tr>
+            <tr><th scope="row">Trust</th><td>Hand-typed spreadsheets</td><td>Every cell cited, so decisions can be audited</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="metrics">
+        <li><strong>~16h → min</strong><span>Per-competitor refresh (target)</span></li>
+        <li><strong>50+</strong><span>Competitors processed in parallel</span></li>
+        <li><strong>0</strong><span>Brittle selectors to maintain</span></li>
+        <li><strong>100%</strong><span>Cells with source and step trace</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Feasibility -->
+  <section class="section band" id="feasibility" aria-labelledby="feas-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="feas-title">Buildable in the hackathon window with off-the-shelf parts.</h2>
+      </div>
+      <div class="feas-grid">
+        <dl class="feas-list">
+          <div>
+            <dt>Stack</dt>
+            <dd>
+              <ul class="chips"><li>TinyFish SDK</li><li>FastAPI</li><li>LangGraph</li><li>Pydantic</li><li>React</li></ul>
+              <p class="note">No custom model training.</p>
+            </dd>
+          </div>
+          <div>
+            <dt>MVP scope</dt>
+            <dd>3 competitors × pricing calculator + docs, end to end.</dd>
+          </div>
+          <div>
+            <dt>Team split</dt>
+            <dd><ul class="team"><li>Agent orchestration</li><li>Schemas + LLM</li><li>Frontend</li></ul></dd>
+          </div>
+          <div>
+            <dt>Demo reliability</dt>
+            <dd>The demo path is pre-validated with fallbacks, so there’s no single point of failure.</dd>
+          </div>
+        </dl>
+        <div class="risks">
+          <h3>Risks and how we handle them</h3>
+          <table class="risk-table">
+            <thead><tr><th scope="col">Risk</th><th scope="col">Mitigation</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Bot protection</th><td>TinyFish handles it at the platform level.</td></tr>
+              <tr><th scope="row">Bad extraction</th><td>Schema validation, retry and the Fetch API fallback.</td></tr>
+              <tr><th scope="row">Cost and latency</th><td>The router sends static pages to the Fetch API.</td></tr>
+              <tr><th scope="row">Hallucination</th><td>Synthesis reads validated data only.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="section" id="roadmap" aria-labelledby="roadmap-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="roadmap-title">From research tool to an autonomous market-monitoring layer.</h2>
+      </div>
+      <ol class="roadmap">
+        <li class="stage now">
+          <h3>Now</h3>
+          <p class="stage-sum">On-demand matrices with cited cells.</p>
+          <ul><li>One prompt in, a comparison matrix out</li><li>Source link, confidence and step trace on every cell</li></ul>
+        </li>
+        <li class="stage next">
+          <h3>Next</h3>
+          <p class="stage-sum">Scheduled monitors, alerts and integrations.</p>
+          <ul><li>Slack and email alerts on price or packaging changes</li><li>Export to Sheets, Notion and CRM</li></ul>
+        </li>
+        <li class="stage later">
+          <h3>Later</h3>
+          <p class="stage-sum">Self-healing agents, vertical packs and an API.</p>
+          <ul><li>Self-healing goals learned from failed runs</li><li>Vertical packs for SaaS, fintech and e-commerce</li><li>Public API</li></ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="closing on-screen" aria-labelledby="closing-title">
+    <div class="wrap closing-inner">
+      <div>
+        <h2 id="closing-title">Stop living in competitor tabs.</h2>
+        <p>Nexus Agent is our entry for Kritical Hacks 2026 at IGDTUW Delhi, in the AI/ML track (open innovation), built on the TinyFish Agent API and Fetch API.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-light gh-link" href="https://github.com/YOUR-USERNAME/kritical-nexus-agent" target="_blank" rel="noopener">View the code on GitHub</a>
+        <a class="btn btn-screen" href="#demo" data-run-demo>Replay the demo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer on-screen">
+  <div class="wrap footer-inner">
+    <span class="footer-brand">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="m-bg" x="1" y="1" width="30" height="30" rx="9"/>
+        <path class="m-line" d="M16 16 8.6 9.6M16 16l7.6-6.2M16 16v8.8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle class="m-fg" cx="8.6" cy="9.6" r="2.5"/>
+        <circle class="m-fg" cx="23.6" cy="9.8" r="2.5"/>
+        <circle class="m-fg" cx="16" cy="24.8" r="2.5"/>
+        <circle class="m-hub" cx="16" cy="16" r="3.8"/>
+      </svg>
+      Nexus Agent
+    </span>
+    <span>Kritical Hacks 2026, AI/ML track. Powered by TinyFish.</span>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
